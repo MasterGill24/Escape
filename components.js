@@ -1,30 +1,69 @@
-// Define components in this file in the following format
+/**
+ * The entity's position in the world.
+ */
 ECS.Components.Position = function(x, y) {
   this.x = x || 0;
   this.y = y || 0;
-	
+
   return this;
 }
 ECS.Components.Position.prototype.name = "Position";
 
-ECS.Components.Health = function (initialHealth, maxHealth){
-	this.initialHealth = initialHealth;
+/**
+ * The entity's health and stores the max value it can be.
+ */
+ECS.Components.Health = function (maxHealth, initHealth){
 	this.maxHealth = maxHealth;
-	
+  this.initHealth = initHealth || maxHealth;
+
 	return this;
 }
 ECS.Components.Health.prototype.name = "Health";
 
+/**
+ * How much damage is inflicted upon other entities when they collide.
+ */
 ECS.Components.Damage = function (damage){
 	this.damage = damage;
-	
+
 	return this;
 }
 ECS.Components.Damage.prototype.name = "Damage";
 
+/**
+ * The velocity of the entity.
+ */
 ECS.Components.Velocity = function (velocity){
 	this.velocity = velocity;
-	
+
 	return this;
 }
 ECS.Components.Velocity.prototype.name = "Velocity";
+
+/**
+ * The bounding box used for testing collisions.
+ */
+ ECS.Components.Collision = function(boundingBox) {
+   this.boundingBox = boundingBox;
+
+   return this;
+ }
+ ECS.Components.Collision.prototype.name = "Collision";
+
+ /**
+  * The spritesheet used for drawing.
+  */
+  ECS.Components.Spritesheet = function(spritesheet) {
+    this.spritesheet = spritesheet;
+
+    return this;
+  }
+  ECS.Components.Spritesheet.prototype.name = "Spritesheet";
+
+  /**
+   * Marks the entity to be controlled by the player.
+   */
+   ECS.Components.PlayerControl = function() {
+     return this;
+   }
+   ECS.Components.PlayerControl.prototype.name = "Player Control";
