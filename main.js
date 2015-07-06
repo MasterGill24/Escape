@@ -7,12 +7,12 @@
   canvas.height = 480;
 
   // Set up keyboard and mouse input
-  Input.bindKeyListener("body", document.body);
-  Input.setPreventDefault("body", "up", true);
-  Input.setPreventDefault("body", "down", true);
-  Input.setPreventDefault("body", "left", true);
-  Input.setPreventDefault("body", "right", true);
-  Input.bindMouseListener("canvas", canvas);
+  Input.bindKeyListener(document.body);
+  Input.setPreventDefault(document.body, "up", true);
+  Input.setPreventDefault(document.body, "down", true);
+  Input.setPreventDefault(document.body, "left", true);
+  Input.setPreventDefault(document.body, "right", true);
+  Input.bindMouseListener(canvas);
 
   // INITIALIZE ENTITIES HERE <-------------------------------------------------
 
