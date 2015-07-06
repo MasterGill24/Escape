@@ -1,3 +1,9 @@
+/**
+ * ECS (Entity component system) is a framework based around entities that have
+ * various components that can be added or removed on the fly. Components
+ * merely contain data and have no game logic. All of the logic rests inside of
+ * the systems, which act upon one or more components.
+ */
 var ECS = function() {
   var ECS = {};
 
@@ -23,13 +29,13 @@ var ECS = function() {
       return this;
     }
 
-    Entity.prototype.addComponent(component) {
+    Entity.prototype.addComponent = function(component) {
       // Adds the component to the table with the name of the component as the key
       this.components[component.name] = component;
       return this;
     }
 
-    Entity.prototype.removeComponent(component) {
+    Entity.prototype.removeComponent = function(component) {
       // Assumes the argument is the name of the component (a string)
       var name = component;
       if (typeof component === "function") { // If it is a function (thus the entire component)...
@@ -45,6 +51,15 @@ var ECS = function() {
 
     return Entity;
   }();
+
+  // An array of all of the entities
+  ECS.Entities = [];
+
+  // A table of all of the components
+  ECS.Components = {};
+
+  // A table of all of the systems
+  ECS.Systems = {};
 
   return ECS;
 }();
