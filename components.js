@@ -18,6 +18,13 @@ ECS.Components.Health.prototype.name = "Health";
 ECS.Components.Damage = function (damage){
 	this.damage = damage;
 	
-	return this:
+	return this;
 }
 ECS.Components.Damage.prototype.name = "Damage";
+
+ECS.Components.Velocity = function (velocity){
+	this.velocity = velocity;
+	
+	return this;
+}
+ECS.Components.Velocity.prototype.name = "Velocity";
