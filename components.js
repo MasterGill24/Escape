@@ -43,8 +43,10 @@ ECS.Components.Velocity.prototype.name = "Velocity";
 /**
  * The bounding box used for testing collisions.
  */
- ECS.Components.Collision = function(boundingBox) {
-   this.boundingBox = boundingBox;
+ ECS.Components.Collision = function(width, height, onCollision) {
+   this.width = width;
+   this.height = height;
+   this.onCollision = onCollision;
 
    return this;
  }
@@ -54,7 +56,13 @@ ECS.Components.Velocity.prototype.name = "Velocity";
   * The spritesheet used for drawing.
   */
   ECS.Components.Spritesheet = function(spritesheet) {
+    // An array of animations which are arrays of frames
+    // Access the frame to draw with spritesheet[animationNum][frameNum]
     this.spritesheet = spritesheet;
+    // The index of the current animation
+    this.animationNum = 0;
+    // The index of the current frame
+    this.frameNum = 0;
 
     return this;
   }
