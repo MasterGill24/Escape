@@ -1,5 +1,5 @@
 ECS.Assemblages = {
-	Player: function(){
+	Player: function() {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Position());
 		entity.addComponent(new ECS.Components.Velocity());
@@ -8,14 +8,16 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Spritesheet());
 		entity.addComponent(new ECS.Components.PlayerControlled());
 		return entity;
-	}
-	Gun: function(){
+	},
+
+	Gun: function() {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Position());
 		entity.addComponent(new ECS.Components.Spritesheet());
 		return entity;
-	}
-	Bullet: function(){
+	},
+
+	Bullet: function() {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Position());
 		entity.addComponent(new ECS.Components.Velocity());
@@ -23,8 +25,9 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Collision());
 		entity.addComponent(new ECS.Components.Spritesheet());
 		return entity;
-	}
-	Enemy: function(){
+	},
+
+	Enemy: function() {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Position());
 		entity.addComponent(new ECS.Components.Velocity());
@@ -33,14 +36,16 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Collision());
 		entity.addComponent(new ECS.Components.Spritesheet());
 		return entity;
-	}
-	BackgroundTile: function(){
+	},
+
+	BackgroundTile: function() {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Position());
 		entity.addComponent(new ECS.Components.Spritesheet());
 		return entity;
-	}
-	Tile: function(){
+	},
+
+	Tile: function() {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Position());
 		entity.addComponent(new ECS.Components.Collision());
