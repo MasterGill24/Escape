@@ -1,8 +1,8 @@
-(function main() {
-  // Set up the canvas for rendering
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
+// Set up the canvas for rendering
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 
+window.onload = function() {
   canvas.width = 640;
   canvas.height = 480;
 
@@ -14,10 +14,13 @@
   Input.setPreventDefault(document.body, "right", true);
   Input.bindMouseListener(canvas);
 
-  // INITIALIZE ENTITIES HERE <-------------------------------------------------
+  var player = ECS.Assemblages.Player(64, 64);
+  ECS.Entities[player.id] = player;
 
   // An array of the systems in the order they should be executed
-  var systems = [];
+  var systems = [
+    ECS.Systems.Render
+  ];
 
   // The game loop that will call all of the systems and repeat
   function loop() {
@@ -29,4 +32,4 @@
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
-})();
+}
