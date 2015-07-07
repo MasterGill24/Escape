@@ -16,8 +16,12 @@ ECS.Systems.Collision = function() {
         			}
 
         			if ((entity.components.Type.type === "player" || entity.components.Type.type === "enemy") && other.components.Type.type === "tile") {
-        				entity.components.Velocity.velocity = new Vector(0, 0);
-                entity.components.Position.y = other.components.Position.y - entity.components.Collision.height;
+        				if (entity.components.Position.y < other.components.Position.y) {
+                  entity.components.Position.y = other.components.Position.y - entity.components.Collision.height;
+                } else if (entity.components.Position.y > other.components.Position.y) {
+                  entity.components.Position.y = other.components.Position.y + other.components.Collision.height;
+                }
+                entity.components.Velocity.velocity = new Vector(0, 0);
                 entity.components.Gravity.inAir = false;
         			}
 
