@@ -1,3 +1,10 @@
+ECS.Components.Type = function(type) {
+  this.type = type;
+
+  return this;
+}
+ECS.Components.Type.prototype.name = "Type";
+
 /**
  * The entity's position in the world.
  */
@@ -43,10 +50,10 @@ ECS.Components.Velocity.prototype.name = "Velocity";
 /**
  * The bounding box used for testing collisions.
  */
- ECS.Components.Collision = function(width, height, onCollision) {
+ ECS.Components.Collision = function(width, height, callback) {
    this.width = width;
    this.height = height;
-   this.onCollision = onCollision;
+   this.callback = callback;
 
    return this;
  }
