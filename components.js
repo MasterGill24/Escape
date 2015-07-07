@@ -61,14 +61,17 @@ ECS.Components.Velocity.prototype.name = "Velocity";
  /**
   * The spritesheet used for drawing.
   */
-  ECS.Components.Spritesheet = function(spritesheet) {
-    // An array of animations which are arrays of frames
-    // Access the frame to draw with spritesheet[animationNum][frameNum]
+  ECS.Components.Spritesheet = function(spritesheet, width, height) {
+    // A spritesheet as an image
     this.spritesheet = spritesheet;
     // The index of the current animation
     this.animationNum = 0;
     // The index of the current frame
     this.frameNum = 0;
+
+    // The dimensions of each frame
+    this.width = width;
+    this.height = height;
 
     return this;
   }
