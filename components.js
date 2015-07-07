@@ -50,10 +50,9 @@ ECS.Components.Velocity.prototype.name = "Velocity";
 /**
  * The bounding box used for testing collisions.
  */
- ECS.Components.Collision = function(width, height, callback) {
+ ECS.Components.Collision = function(width, height) {
    this.width = width;
    this.height = height;
-   this.callback = callback;
 
    return this;
  }
