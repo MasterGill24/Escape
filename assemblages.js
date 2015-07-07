@@ -8,6 +8,7 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Collision(16, 16, null));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
 		entity.addComponent(new ECS.Components.PlayerControl());
+		entity.addComponent(new ECS.Components.Gravity());
 		return entity;
 	},
 
@@ -39,6 +40,7 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Damage(5));
 		entity.addComponent(new ECS.Components.Collision(16, 16, null));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
+		entity.addComponent(new ECS.Components.Gravity());
 		return entity;
 	},
 

@@ -50,37 +50,43 @@ ECS.Components.Velocity.prototype.name = "Velocity";
 /**
  * The bounding box used for testing collisions.
  */
- ECS.Components.Collision = function(width, height) {
-   this.width = width;
-   this.height = height;
+ECS.Components.Collision = function(width, height) {
+  this.width = width;
+  this.height = height;
 
-   return this;
- }
- ECS.Components.Collision.prototype.name = "Collision";
+  return this;
+}
+ECS.Components.Collision.prototype.name = "Collision";
 
  /**
   * The spritesheet used for drawing.
   */
-  ECS.Components.Spritesheet = function(spritesheet, width, height) {
-    // A spritesheet as an image
-    this.spritesheet = spritesheet;
-    // The index of the current animation
-    this.animationNum = 0;
-    // The index of the current frame
-    this.frameNum = 0;
+ECS.Components.Spritesheet = function(spritesheet, width, height) {
+  // A spritesheet as an image
+  this.spritesheet = spritesheet;
+  // The index of the current animation
+  this.animationNum = 0;
+  // The index of the current frame
+  this.frameNum = 0;
 
-    // The dimensions of each frame
-    this.width = width;
-    this.height = height;
+  // The dimensions of each frame
+  this.width = width;
+  this.height = height;
 
-    return this;
-  }
-  ECS.Components.Spritesheet.prototype.name = "Spritesheet";
+  return this;
+}
+ECS.Components.Spritesheet.prototype.name = "Spritesheet";
 
-  /**
-   * Marks the entity to be controlled by the player.
-   */
-   ECS.Components.PlayerControl = function() {
-     return this;
-   }
-   ECS.Components.PlayerControl.prototype.name = "PlayerControl";
+/**
+ * Marks the entity to be controlled by the player.
+ */
+ECS.Components.PlayerControl = function() {
+  return this;
+}
+ECS.Components.PlayerControl.prototype.name = "PlayerControl";
+
+ECS.Components.Gravity = function() {
+  this.inAir = true;
+  return this;
+}
+ECS.Components.Gravity.prototype.name = "Gravity";

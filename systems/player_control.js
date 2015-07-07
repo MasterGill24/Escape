@@ -1,7 +1,6 @@
 ECS.Systems.PlayerControl = function() {
-  var playerSpeed = 1;
-  var jumpPos = 0;
-  var jumping = false;
+  var playerSpeed = 3;
+  var jumpPos = -10;
 
   var zeroVector = new Vector(0, 0);
   var leftVector = new Vector(-playerSpeed, 0);
@@ -12,7 +11,11 @@ ECS.Systems.PlayerControl = function() {
       var entity = ECS.Entities[entityId];
 
       if (entity.components.Velocity && entity.components.PlayerControl) {
+        if (entity.components.Gravity.inAir === false) {
+          jumpPos = 0;
+        }
         entity.components.Velocity.velocity = zeroVector.clone();
+
         if (Input.isKeyDown(document.body, "left")) {
           entity.components.Velocity.velocity.add(leftVector);
         }
@@ -20,23 +23,19 @@ ECS.Systems.PlayerControl = function() {
           entity.components.Velocity.velocity.add(rightVector);
         }
         if (Input.isKeyDown(document.body, "z")) {
-          jumping = true;
+          jumpPos = -10;
+          entity.components.Gravity.inAir = true;
         }
         if (Input.isKeyDown(document.body, "x")) {
           // Shoot
         }
 
-        if (jumping) {
-          // Calculate jump vector
-          var jumpY = jumpPos*jumpPos - 4 * jumpPos;
-          if (jumpPos < 4) {
-            entity.components.Velocity.velocity.add(new Vector(0, jumpY));
-            jumpPos += 0.25;
-          } else {
-            jumping = false;
-            jumpPos = 0;
-          }
+        // Calculate jump vector
+        if (entity.components.Gravity.inAir) {
+          entity.components.Velocity.velocity.add(new Vector(0, 3 * Math.atan(jumpPos)));
+          jumpPos += 0.75;
         }
+        entity.components.Gravity.inAir = true;
       }
     }
   }
