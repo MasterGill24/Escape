@@ -19,6 +19,8 @@ window.onload = function() {
 
   // An array of the systems in the order they should be executed
   var systems = [
+    ECS.Systems.PlayerControl,
+    ECS.Systems.Movement,
     ECS.Systems.Render
   ];
 
