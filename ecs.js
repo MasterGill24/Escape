@@ -53,7 +53,7 @@ var ECS = function() {
   }();
 
   // An array of all of the entities
-  ECS.Entities = [];
+  ECS.Entities = {};
 
   // A table of all of the components
   ECS.Components = {};
