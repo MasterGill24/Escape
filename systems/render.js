@@ -1,7 +1,7 @@
 ECS.Systems.Render = function() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   function Render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     for (var entityId in ECS.Entities) {
       var entity = ECS.Entities[entityId];
 
