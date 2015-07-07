@@ -29,6 +29,10 @@ var Input = function() {
 		element.addEventListener("keyup", function(e) {
 			bindings[element].keys[keyCodes[e.which]] = false;
 		}, false);
+
+		element.addEventListener("blur", function(e) {
+			bindings[element].keys = {};
+		}, false);
 	}
 
 	// Allows the default action for a keypress to be ignored for the specified element.
@@ -87,6 +91,11 @@ var Input = function() {
 			bindings[element].mouse[mouseButtons[e.button]] = true;
 		}, false);
 
+		element.addEventListener("blur", function(e) {
+			bindings[element].left = false;
+			bindings[element].middle = false;
+			bindings[element].right = false;
+		}, false);
 	}
 
 	// Returns the position of the mouse relative to the element.
