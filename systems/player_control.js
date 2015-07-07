@@ -28,9 +28,10 @@ ECS.Systems.PlayerControl = function() {
 
         if (jumping) {
           // Calculate jump vector
-          var jumpY = -(jumpPos*jumpPos) + 4 * jumpPos;
+          var jumpY = jumpPos*jumpPos - 4 * jumpPos;
           if (jumpPos < 4) {
-            entity.components.Velocity.velocity.add(newVector(0, jumpY));
+            entity.components.Velocity.velocity.add(new Vector(0, jumpY));
+            jumpPos += 0.25;
           } else {
             jumping = false;
             jumpPos = 0;

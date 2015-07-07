@@ -40,8 +40,8 @@ ECS.Components.Damage.prototype.name = "Damage";
 /**
  * The velocity of the entity.
  */
-ECS.Components.Velocity = function (velocity){
-	this.velocity = velocity;
+ECS.Components.Velocity = function (){
+	this.velocity = new Vector(0, 0);
 
 	return this;
 }
@@ -84,4 +84,4 @@ ECS.Components.Velocity.prototype.name = "Velocity";
    ECS.Components.PlayerControl = function() {
      return this;
    }
-   ECS.Components.PlayerControl.prototype.name = "Player Control";
+   ECS.Components.PlayerControl.prototype.name = "PlayerControl";

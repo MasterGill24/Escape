@@ -7,8 +7,8 @@ ECS.Systems.Movement = function() {
       var entity = ECS.Entities[entityId];
       if (entity.components.Position && entity.components.Velocity) {
         // Divide the velocity by 60 since the game runs at 60 fps
-        entity.components.Position.x += (entity.components.Velocity.x / 60.0);
-        entity.components.Position.y += (entity.components.Velocity.y / 60.0);
+        entity.components.Position.x += (entity.components.Velocity.velocity.x);
+        entity.components.Position.y += (entity.components.Velocity.velocity.y);
       }
     }
   }
