@@ -31,6 +31,12 @@ ECS.Systems.Render = function() {
 				}
 
 				ctx.fillRect(entity.components.Position.x, entity.components.Position.y, entity.components.Spritesheet.width, entity.components.Spritesheet.height)
+			} else if (entity.components.Position && entity.components.Text) {
+				ctx.fillStyle = "#FFFFFF";
+				ctx.textAlign = "center";
+				ctx.font = "16pt Sans-Serif";
+				ctx.textBaseline = "top";
+				ctx.fillText(entity.components.Text.text, entity.components.Position.x, entity.components.Position.y)
 			}
 		}
 	}

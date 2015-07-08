@@ -15,6 +15,10 @@ ECS.Systems.PlayerControl = function() {
 				}
 				entity.components.Velocity.velocity = zeroVector.clone();
 
+				var time = Date.now() - timeStart;
+				var sec = Math.floor(time/1000 % 60);
+				timer.components.Text.text = (time/60000 << 0) + ":" + (sec < 10 ? "0" : "") + sec;
+
 				if (Input.isKeyDown(document.body, "left")) {
 					entity.components.Velocity.velocity.add(new Vector(-entity.components.Speed.speed, 0));
 					movingRight = false;

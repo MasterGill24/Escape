@@ -3,6 +3,8 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 var numEnemies = 0;
+var timeStart = Date.now();
+var timer;
 
 window.onload = function() {
 	canvas.width = 640;
@@ -57,6 +59,12 @@ window.onload = function() {
 
 	var player = ECS.Assemblages.Player(192, 112);
 	ECS.Entities[player.id] = player;
+
+	timer = new ECS.Entity();
+	timer.addComponent(new ECS.Components.Type("timer"));
+	timer.addComponent(new ECS.Components.Position(200, 32));
+	timer.addComponent(new ECS.Components.Text("0:00"));
+	ECS.Entities[timer.id] = timer;
 
 	// An array of the systems in the order they should be executed
 	var systems = [

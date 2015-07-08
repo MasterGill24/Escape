@@ -84,6 +84,13 @@ ECS.Components.Spritesheet = function(spritesheet, width, height) {
 }
 ECS.Components.Spritesheet.prototype.name = "Spritesheet";
 
+ECS.Components.Text = function(text) {
+	this.text = text;
+
+	return this;
+}
+ECS.Components.Text.prototype.name = "Text";
+
 /**
  * Marks the entity to be controlled by the player.
  */
