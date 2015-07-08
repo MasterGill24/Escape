@@ -49,11 +49,6 @@ window.onload = function() {
 		}
 	}
 
-	for (var i = 0; i < 1; ++i) {
-		var enemy = ECS.Assemblages.Enemy(80, 64);
-		ECS.Entities[enemy.id] = enemy;
-	}
-
 	var player = ECS.Assemblages.Player(192, 112);
 	ECS.Entities[player.id] = player;
 

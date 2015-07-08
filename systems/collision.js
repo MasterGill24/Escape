@@ -12,7 +12,7 @@ ECS.Systems.Collision = function() {
 							 (Math.abs(entity.components.Position.y - other.components.Position.y) * 2 < (entity.components.Collision.height + other.components.Collision.height))) {
 
 							if (entity.components.Type.type === "player" && other.components.Type.type === "enemy") {
-								entity.components.Health.health -= entity.components.Damage.damage;
+								entity.components.Health.health -= other.components.Damage.damage;
 							}
 
 							if ((entity.components.Type.type === "player" || entity.components.Type.type === "enemy") && other.components.Type.type === "tile") {
