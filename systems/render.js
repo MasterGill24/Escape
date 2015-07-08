@@ -5,7 +5,12 @@ ECS.Systems.Render = function() {
 		for (var entityId in ECS.Entities) {
 			var entity = ECS.Entities[entityId];
 
-			if (entity.components.Position && entity.components.Spritesheet) {
+			if (entity.components.Type && entity.components.Type.type === "health bar") {
+				ctx.fillStyle = "#00995B";
+				ctx.fillRect(entity.components.Position.x, entity.components.Position.y, entity.components.Spritesheet.width, entity.components.Spritesheet.height);
+				ctx.fillStyle = "#00FF99";
+				ctx.fillRect(entity.components.Position.x, entity.components.Position.y, player.components.Health.health * 0.75, entity.components.Spritesheet.height);
+			} else if (entity.components.Position && entity.components.Spritesheet) {
 				// Temporarily only drawing colored rectangles
 				switch (entity.components.Type.type) {
 					case "player":

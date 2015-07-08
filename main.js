@@ -4,7 +4,10 @@ var ctx = canvas.getContext("2d");
 
 var numEnemies = 0;
 var timeStart = Date.now();
+
+var player;
 var timer;
+var healthBar;
 
 window.onload = function() {
 	canvas.width = 640;
@@ -57,7 +60,7 @@ window.onload = function() {
 		}
 	}
 
-	var player = ECS.Assemblages.Player(192, 112);
+	player = ECS.Assemblages.Player(192, 112);
 	ECS.Entities[player.id] = player;
 
 	timer = new ECS.Entity();
@@ -65,6 +68,12 @@ window.onload = function() {
 	timer.addComponent(new ECS.Components.Position(200, 32));
 	timer.addComponent(new ECS.Components.Text("0:00"));
 	ECS.Entities[timer.id] = timer;
+
+	healthBar = new ECS.Entity();
+	healthBar.addComponent(new ECS.Components.Type("health bar"));
+	healthBar.addComponent(new ECS.Components.Position(32, 40));
+	healthBar.addComponent(new ECS.Components.Spritesheet(null, 75, 8));
+	ECS.Entities[healthBar.id] = healthBar;
 
 	// An array of the systems in the order they should be executed
 	var systems = [
