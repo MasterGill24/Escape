@@ -1,11 +1,8 @@
 ECS.Systems.PlayerControl = function() {
-	var playerSpeed = 3;
 	var jumpPos = -10;
 	var canJump = true;
 
 	var zeroVector = new Vector(0, 0);
-	var leftVector = new Vector(-playerSpeed, 0);
-	var rightVector = new Vector(playerSpeed, 0);
 
 	function PlayerControl() {
 		for (var entityId in ECS.Entities) {
@@ -19,11 +16,11 @@ ECS.Systems.PlayerControl = function() {
 				}
 				entity.components.Velocity.velocity = zeroVector.clone();
 
-				if (Input.isKeyDown(document.body, "left")) {
-					entity.components.Velocity.velocity.add(leftVector);
+				if (Input.isKeyDown(document.body, "left`")) {
+					entity.components.Velocity.velocity.add(new Vector(-entity.components.Speed.speed, 0));
 				}
 				if (Input.isKeyDown(document.body, "right")) {
-					entity.components.Velocity.velocity.add(rightVector);
+					entity.components.Velocity.velocity.add(new Vector(entity.components.Speed.speed, 0));
 				}
 				if (Input.isKeyDown(document.body, "z")) {
 					if (canJump) {
