@@ -94,6 +94,7 @@ ECS.Components.PlayerControl.prototype.name = "PlayerControl";
 
 ECS.Components.Gravity = function() {
 	this.inAir = false;
+	this.gravityPos = 0;
 	return this;
 }
 ECS.Components.Gravity.prototype.name = "Gravity";
