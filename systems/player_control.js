@@ -1,5 +1,6 @@
 ECS.Systems.PlayerControl = function() {
 	var zeroVector = new Vector(0, 0);
+	var canJump;
 
 	function PlayerControl() {
 		for (var entityId in ECS.Entities) {

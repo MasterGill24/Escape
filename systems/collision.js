@@ -11,12 +11,12 @@ ECS.Systems.Collision = function() {
 							var y = Math.abs(entity.components.Position.y - other.components.Position.y) * 2;
 							var w = (entity.components.Collision.width + other.components.Collision.width);
 							var h = (entity.components.Collision.height + other.components.Collision.height);
-							if (((x <= w) && (y <= h))) { // && !((x === w) && (y === h))
+							if (((x <= w) && (y <= h))) {
 								if (entity.components.Type.type === "player" && other.components.Type.type === "enemy") {
 									entity.components.Health.health -= other.components.Damage.damage;
 								}
 
-								if ((entity.components.Type.type === "player" || entity.components.Type.type === "enemy") && other.components.Type.type === "tile") {
+								if ((entity.components.Type.type === "player" || entity.components.Type.type === "enemy") && other.components.Type.type.includes("tile")) {
 									var xDiff = Math.abs((entity.components.Position.x + entity.components.Collision.width / 2) - (other.components.Position.x + other.components.Collision.width / 2));
 									var yDiff = Math.abs((entity.components.Position.y + entity.components.Collision.height / 2) - (other.components.Position.y + other.components.Collision.height / 2));
 									if (yDiff > xDiff) { // Collision from the top or bottom
@@ -49,11 +49,11 @@ ECS.Systems.Collision = function() {
 
 								if (entity.components.Type.type === "bullet" && other.components.Type.type === "enemy") {
 									other.components.Health.health -= entity.components.Damage.damage;
-									delete entity;
+									delete ECS.Entities[entityId];
 								}
 
-								if (entity.components.Type.type === "bullet" && other.components.Type.type === "tile") {
-									delete entity;
+								if (entity.components.Type.type === "bullet" && other.components.Type.type.includes("tile")) {
+									delete ECS.Entities[entityId];
 								}
 							}
 						}

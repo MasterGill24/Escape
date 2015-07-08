@@ -62,5 +62,23 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Collision(16, 16, null));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
 		return entity;
+	},
+
+	CornerTile: function(x, y) {
+		var entity = new ECS.Entity();
+		entity.addComponent(new ECS.Components.Type("corner tile"));
+		entity.addComponent(new ECS.Components.Position(x, y));
+		entity.addComponent(new ECS.Components.Collision(16, 16, null));
+		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
+		return entity;
+	},
+	
+	WallTile: function(x, y) {
+		var entity = new ECS.Entity();
+		entity.addComponent(new ECS.Components.Type("wall tile"));
+		entity.addComponent(new ECS.Components.Position(x, y));
+		entity.addComponent(new ECS.Components.Collision(16, 16, null));
+		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
+		return entity;
 	}
 }
