@@ -16,13 +16,29 @@ ECS.Systems.Collision = function() {
 							}
 
 							if ((entity.components.Type.type === "player" || entity.components.Type.type === "enemy") && other.components.Type.type === "tile") {
-								if (entity.components.Position.y < other.components.Position.y) {
-									entity.components.Position.y = other.components.Position.y - entity.components.Collision.height;
-									entity.components.Gravity.inAir = false;
-								} else if (entity.components.Position.y > other.components.Position.y) {
-									entity.components.Position.y = other.components.Position.y + other.components.Collision.height;
+								var xDiff = Math.abs((entity.components.Position.x + entity.components.Collision.width / 2) - (other.components.Position.x + other.components.Collision.width / 2));
+								var yDiff = Math.abs((entity.components.Position.y + entity.components.Collision.height / 2) - (other.components.Position.y + other.components.Collision.height / 2));
+								if (yDiff > xDiff) { // Collision from the top or bottom
+									if (xDiff < (entity.components.Collision.width + other.components.Collision.width) / 2 - 3) {
+										if (entity.components.Position.y < other.components.Position.y) {
+											entity.components.Position.y = other.components.Position.y - entity.components.Collision.height;
+											entity.components.Gravity.inAir = false;
+											entity.components.Velocity.velocity.y = 0;
+										} else {
+											entity.components.Position.y = other.components.Position.y + other.components.Collision.height;
+											entity.components.Velocity.velocity.y = 0;
+										}
+									}
+								} else { // Collision from the sides
+									if (yDiff < (entity.components.Collision.height + other.components.Collision.height) / 2) {
+										if (entity.components.Position.x < other.components.Position.x) {
+											entity.components.Position.x = other.components.Position.x - entity.components.Collision.width;
+										} else {
+											entity.components.Position.x = other.components.Position.x + other.components.Collision.width;
+										}
+										entity.components.Velocity.velocity.x = 0;
+									}
 								}
-								entity.components.Velocity.velocity = new Vector(0, 0);
 							}
 
 							if (entity.components.Type.type === "bullet" && other.components.Type.type === "enemy") {
