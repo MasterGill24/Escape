@@ -37,13 +37,14 @@ ECS.Systems.Collision = function() {
 											} else {
 												entity.components.Position.x = other.components.Position.x + other.components.Collision.width;
 											}
-											entity.components.Velocity.velocity.x = 0;
+
+											if (entity.components.Type.type === "enemy") {
+												entity.components.Velocity.velocity.x = -entity.components.Velocity.velocity.x;
+											} else {
+												entity.components.Velocity.velocity.x = 0;
+											}
 										}
 									}
-								}
-
-								if (entity.components.Type.type === "enemy" && other.components.Type.type === "tile") {
-									entity.components.Velocity.velocity.x = -entity.components.Velocity.velocity.x;
 								}
 
 								if (entity.components.Type.type === "bullet" && other.components.Type.type === "enemy") {
