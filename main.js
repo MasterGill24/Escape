@@ -19,7 +19,7 @@ window.onload = function() {
 						 ["X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X"],
 						 ["X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X"],
 						 ["X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X"],
-						 ["X", "X", "X", "X", "X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X", "X", "X", "X", "X"],
+						 ["X", "X", "X", "X", "X", "X", "X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X", "X", "X", "X", "X", "X", "X"],
 						 ["X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X"],
 						 ["X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X"],
 						 ["X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X", "X", "X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X"],
@@ -49,6 +49,11 @@ window.onload = function() {
 		}
 	}
 
+	for (var i = 0; i < 1; ++i) {
+		var enemy = ECS.Assemblages.Enemy(112, 64, 2);
+		ECS.Entities[enemy.id] = enemy;
+	}
+
 	var player = ECS.Assemblages.Player(192, 112);
 	ECS.Entities[player.id] = player;
 
@@ -57,7 +62,7 @@ window.onload = function() {
 		ECS.Systems.PlayerControl,
 		ECS.Systems.Movement,
 		ECS.Systems.Collision,
-		ECS.Systems.Render
+		ECS.Systems.Render,
 	];
 
 	// The game loop that will call all of the systems and repeat

@@ -38,6 +38,7 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Position(x, y));
 		entity.addComponent(new ECS.Components.Speed(2));
 		entity.addComponent(new ECS.Components.Velocity());
+		entity.components.Velocity.velocity.x = entity.components.Speed.speed;
 		entity.addComponent(new ECS.Components.Health(5));
 		entity.addComponent(new ECS.Components.Damage(5));
 		entity.addComponent(new ECS.Components.Collision(16, 16, null));
