@@ -1,4 +1,7 @@
 ECS.Systems.Render = function() {
+	var timeSinceLastFrame = Infinity;
+	var reset = false;
+
 	function Render() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -6,31 +9,22 @@ ECS.Systems.Render = function() {
 			var entity = ECS.Entities[entityId];
 
 			if (entity.components.Position && entity.components.Spritesheet) {
-				// Temporarily only drawing colored rectangles
-				switch (entity.components.Type.type) {
-					case "player":
-						ctx.fillStyle = "#00FF99";
-						break;
-					case "enemy":
-						ctx.fillStyle = "#FF2233";
-						break;
-					case "gun":
-						ctx.fillStyle = "#FFBB00";
-						break;
-					case "bullet":
-						ctx.fillStyle = "#DDDDDD";
-						break;
-					case "bg tile":
-						ctx.fillStyle = "#223344";
-						break;
-					case "tile":
-					case "corner tile":
-					case "wall tile":
-						ctx.fillStyle = "#0099FF";
-						break;
-				}
+				var image = entity.components.Spritesheet.spritesheet;
+				var width = entity.components.Spritesheet.width;
+				var height = entity.components.Spritesheet.height;
+				var sliceX = entity.components.Spritesheet.frameNum * width;
+				var sliceY = entity.components.Spritesheet.animationNum * height;
+				var x = entity.components.Position.x;
+				var y = entity.components.Position.y;
 
-				ctx.fillRect(entity.components.Position.x, entity.components.Position.y, entity.components.Spritesheet.width, entity.components.Spritesheet.height)
+				ctx.drawImage(image, sliceX, sliceY, width, height, x, y, width, height);
+
+				if (!entity.components.Spritesheet.staticFrame && timeSinceLastFrame > 5) {
+					if ((++entity.components.Spritesheet.frameNum + 1) * width > entity.components.Spritesheet.spritesheet.width) {
+						entity.components.Spritesheet.frameNum = 0;
+					}
+					reset = true;
+				}
 			} else if (entity.components.Position && entity.components.Text) {
 				ctx.fillStyle = "#FFFFFF";
 				ctx.textAlign = "center";
@@ -39,6 +33,13 @@ ECS.Systems.Render = function() {
 				ctx.fillText(entity.components.Text.text, entity.components.Position.x, entity.components.Position.y)
 			}
 		}
+
+		if (reset) {
+			timeSinceLastFrame = 0;
+			reset = false;
+		}
+
+		++timeSinceLastFrame;
 	}
 
 	return Render;

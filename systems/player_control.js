@@ -19,13 +19,18 @@ ECS.Systems.PlayerControl = function() {
 				var sec = Math.floor(time/1000 % 60);
 				timer.components.Text.text = (time/60000 << 0) + ":" + (sec < 10 ? "0" : "") + sec;
 
+				var moving = false;
 				if (Input.isKeyDown(document.body, "left")) {
 					entity.components.Velocity.velocity.add(new Vector(-entity.components.Speed.speed, 0));
+					entity.components.Spritesheet.flip = true;
 					movingRight = false;
+					moving = true;
 				}
 				if (Input.isKeyDown(document.body, "right")) {
 					entity.components.Velocity.velocity.add(new Vector(entity.components.Speed.speed, 0));
+					entity.components.Spritesheet.flip = false;
 					movingRight = true;
+					moving = true;
 				}
 				if (Input.isKeyDown(document.body, "z")) {
 					if (canJump) {
@@ -40,6 +45,13 @@ ECS.Systems.PlayerControl = function() {
 						ECS.Entities[bullet.id] = bullet;
 						timeSinceLastShot = 0;
 					}
+				}
+
+				if (!moving) {
+					entity.components.Spritesheet.staticFrame = true;
+					entity.components.Spritesheet.frameNum = 0;
+				} else {
+					entity.components.Spritesheet.staticFrame = false;
 				}
 
 				++timeSinceLastShot;

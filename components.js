@@ -68,17 +68,24 @@ ECS.Components.Collision.prototype.name = "Collision";
  /**
 	* The spritesheet used for drawing.
 	*/
-ECS.Components.Spritesheet = function(spritesheet, width, height) {
+ECS.Components.Spritesheet = function(spritesheet, width, height, staticFrame) {
 	// A spritesheet as an image
 	this.spritesheet = spritesheet;
 	// The index of the current animation
 	this.animationNum = 0;
 	// The index of the current frame
-	this.frameNum = 0;
+	this.frameNum = staticFrame || 0;
+
+	this.staticFrame = false;
+	if (staticFrame || staticFrame === 0) {
+		this.staticFrame = true;
+	}
 
 	// The dimensions of each frame
 	this.width = width;
 	this.height = height;
+
+	this.flip = false;
 
 	return this;
 }
