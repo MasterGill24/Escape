@@ -7,9 +7,13 @@ ECS.Systems.Movement = function() {
 			var entity = ECS.Entities[entityId];
 			if (entity.components.Position && entity.components.Velocity) {
 				if (entity.components.Gravity) {
+					if (entity.components.Gravity.inAir === false) {
+						entity.components.Gravity.gravityPos = 0;
+					}
+
 					// Calculate the gravity vector
 					if (entity.components.Gravity.inAir) {
-						entity.components.Velocity.velocity.add(new Vector(0, 5 * Math.atan(entity.components.Gravity.gravityPos)));
+						entity.components.Velocity.velocity.y = 5 * Math.atan(entity.components.Gravity.gravityPos);
 						entity.components.Gravity.gravityPos += 0.75;
 					}
 					entity.components.Gravity.inAir = true;

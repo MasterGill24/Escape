@@ -8,7 +8,6 @@ ECS.Systems.PlayerControl = function() {
 			if (entity.components.Velocity && entity.components.PlayerControl) {
 				// Executes if the player landed on a tile
 				if (entity.components.Gravity.inAir === false) {
-					entity.components.Gravity.gravityPos = 0;
 					canJump = true;
 				}
 				entity.components.Velocity.velocity = zeroVector.clone();
