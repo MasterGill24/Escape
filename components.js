@@ -16,6 +16,13 @@ ECS.Components.Position = function(x, y) {
 }
 ECS.Components.Position.prototype.name = "Position";
 
+ECS.Components.Speed = function(speed) {
+	this.speed = speed;
+
+	return this;
+}
+ECS.Components.Speed.prototype.name = "Speed";
+
 /**
  * The entity's health and stores the max value it can be.
  */
