@@ -28,7 +28,7 @@ ECS.Components.Speed.prototype.name = "Speed";
  */
 ECS.Components.Health = function (maxHealth, initHealth){
 	this.maxHealth = maxHealth;
-	this.initHealth = initHealth || maxHealth;
+	this.health = initHealth || maxHealth;
 
 	return this;
 }
@@ -83,6 +83,13 @@ ECS.Components.Spritesheet = function(spritesheet, width, height) {
 	return this;
 }
 ECS.Components.Spritesheet.prototype.name = "Spritesheet";
+
+ECS.Components.Text = function(text) {
+	this.text = text;
+
+	return this;
+}
+ECS.Components.Text.prototype.name = "Text";
 
 /**
  * Marks the entity to be controlled by the player.
