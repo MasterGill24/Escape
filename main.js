@@ -2,6 +2,8 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+var numEnemies = 0;
+
 window.onload = function() {
 	canvas.width = 640;
 	canvas.height = 480;
@@ -53,11 +55,6 @@ window.onload = function() {
 		}
 	}
 
-	for (var i = 0; i < 1; ++i) {
-		var enemy = ECS.Assemblages.Enemy(112, 64, 2);
-		ECS.Entities[enemy.id] = enemy;
-	}
-
 	var player = ECS.Assemblages.Player(192, 112);
 	ECS.Entities[player.id] = player;
 
@@ -68,6 +65,7 @@ window.onload = function() {
 		ECS.Systems.Movement,
 		ECS.Systems.Collision,
 		ECS.Systems.DeathCheck,
+		ECS.Systems.Spawn,
 		ECS.Systems.Render,
 	];
 

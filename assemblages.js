@@ -6,7 +6,7 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Speed(3));
 		entity.addComponent(new ECS.Components.Velocity());
 		entity.addComponent(new ECS.Components.Health(100));
-		entity.addComponent(new ECS.Components.Collision(16, 16, null));
+		entity.addComponent(new ECS.Components.Collision(16, 16));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
 		entity.addComponent(new ECS.Components.PlayerControl());
 		entity.addComponent(new ECS.Components.Gravity());
@@ -28,7 +28,7 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Speed(10));
 		entity.addComponent(new ECS.Components.Velocity());
 		entity.addComponent(new ECS.Components.Damage(2.5));
-		entity.addComponent(new ECS.Components.Collision(2, 1, null));
+		entity.addComponent(new ECS.Components.Collision(2, 1));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 3, 1));
 		entity.components.Velocity.velocity.x = (moveRight ? 1 : -1) * entity.components.Speed.speed;
 		return entity;
@@ -43,7 +43,7 @@ ECS.Assemblages = {
 		entity.components.Velocity.velocity.x = entity.components.Speed.speed;
 		entity.addComponent(new ECS.Components.Health(5));
 		entity.addComponent(new ECS.Components.Damage(5));
-		entity.addComponent(new ECS.Components.Collision(16, 16, null));
+		entity.addComponent(new ECS.Components.Collision(16, 16));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
 		entity.addComponent(new ECS.Components.Gravity());
 		return entity;
@@ -61,7 +61,7 @@ ECS.Assemblages = {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Type("tile"));
 		entity.addComponent(new ECS.Components.Position(x, y));
-		entity.addComponent(new ECS.Components.Collision(16, 16, null));
+		entity.addComponent(new ECS.Components.Collision(16, 16));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
 		return entity;
 	},
@@ -70,7 +70,7 @@ ECS.Assemblages = {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Type("corner tile"));
 		entity.addComponent(new ECS.Components.Position(x, y));
-		entity.addComponent(new ECS.Components.Collision(16, 16, null));
+		entity.addComponent(new ECS.Components.Collision(16, 16));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
 		return entity;
 	},
@@ -79,7 +79,7 @@ ECS.Assemblages = {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Type("wall tile"));
 		entity.addComponent(new ECS.Components.Position(x, y));
-		entity.addComponent(new ECS.Components.Collision(16, 16, null));
+		entity.addComponent(new ECS.Components.Collision(16, 16));
 		entity.addComponent(new ECS.Components.Spritesheet(null, 16, 16));
 		return entity;
 	}

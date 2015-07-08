@@ -6,6 +6,9 @@ ECS.Systems.DeathCheck = function() {
             if (entity.components.Health) {
                 console.log(entity.components.Health.health);
                 if (entity.components.Health.health <= 0) {
+                    if (entity.components.Type.type === "enemy") {
+                        --numEnemies;
+                    }
                     delete ECS.Entities[entityId];
                 }
             }
