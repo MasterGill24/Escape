@@ -67,6 +67,7 @@ window.onload = function() {
 		ECS.Systems.AI,
 		ECS.Systems.Movement,
 		ECS.Systems.Collision,
+		ECS.Systems.DeathCheck,
 		ECS.Systems.Render,
 	];
 

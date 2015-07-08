@@ -28,7 +28,7 @@ ECS.Components.Speed.prototype.name = "Speed";
  */
 ECS.Components.Health = function (maxHealth, initHealth){
 	this.maxHealth = maxHealth;
-	this.initHealth = initHealth || maxHealth;
+	this.health = initHealth || maxHealth;
 
 	return this;
 }
