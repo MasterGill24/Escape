@@ -1,6 +1,8 @@
 ECS.Systems.PlayerControl = function() {
 	var zeroVector = new Vector(0, 0);
 	var canJump;
+	var timeSinceLastShot = Infinity;
+	var movingRight = true;
 
 	function PlayerControl() {
 		for (var entityId in ECS.Entities) {
@@ -15,9 +17,11 @@ ECS.Systems.PlayerControl = function() {
 
 				if (Input.isKeyDown(document.body, "left")) {
 					entity.components.Velocity.velocity.add(new Vector(-entity.components.Speed.speed, 0));
+					movingRight = false;
 				}
 				if (Input.isKeyDown(document.body, "right")) {
 					entity.components.Velocity.velocity.add(new Vector(entity.components.Speed.speed, 0));
+					movingRight = true;
 				}
 				if (Input.isKeyDown(document.body, "z")) {
 					if (canJump) {
@@ -27,8 +31,14 @@ ECS.Systems.PlayerControl = function() {
 					}
 				}
 				if (Input.isKeyDown(document.body, "x")) {
-					// Shoot
+					if (timeSinceLastShot >= 10) {
+						var bullet = ECS.Assemblages.Bullet(entity.components.Position.x + 7, entity.components.Position.y + 7, movingRight);
+						ECS.Entities[bullet.id] = bullet;
+						timeSinceLastShot = 0;
+					}
 				}
+
+				++timeSinceLastShot;
 			}
 		}
 	}
