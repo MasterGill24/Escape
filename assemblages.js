@@ -3,7 +3,7 @@ ECS.Assemblages = {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Type("player"));
 		entity.addComponent(new ECS.Components.Position(x, y));
-		entity.addComponent(new ECS.Components.Speed(5));
+		entity.addComponent(new ECS.Components.Speed(3.5));
 		entity.addComponent(new ECS.Components.Velocity());
 		entity.addComponent(new ECS.Components.Health(100));
 		entity.addComponent(new ECS.Components.Collision(16, 16));
@@ -38,7 +38,7 @@ ECS.Assemblages = {
 		var entity = new ECS.Entity();
 		entity.addComponent(new ECS.Components.Type("enemy"));
 		entity.addComponent(new ECS.Components.Position(x, y));
-		entity.addComponent(new ECS.Components.Speed(3.5));
+		entity.addComponent(new ECS.Components.Speed(2));
 		entity.addComponent(new ECS.Components.Velocity());
 		entity.components.Velocity.velocity.x = entity.components.Speed.speed;
 		entity.addComponent(new ECS.Components.Health(5));

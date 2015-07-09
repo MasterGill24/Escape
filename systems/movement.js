@@ -14,7 +14,7 @@ ECS.Systems.Movement = function() {
 					// Calculate the gravity vector
 					if (entity.components.Gravity.inAir) {
 						entity.components.Velocity.velocity.y = 5 * Math.atan(entity.components.Gravity.gravityPos);
-						entity.components.Gravity.gravityPos += 1;
+						entity.components.Gravity.gravityPos += 0.75;
 					}
 					entity.components.Gravity.inAir = true;
 				}
