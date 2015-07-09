@@ -2,14 +2,14 @@ ECS.Assemblages = {
 	Player: function(x, y) {
 		var entity = new ECS.Entity();
 		var spritesheet = new Image();
-		spritesheet.src = "res/player.png";
+		spritesheet.src = "res/man.png";
 		entity.addComponent(new ECS.Components.Type("player"));
 		entity.addComponent(new ECS.Components.Position(x, y));
-		entity.addComponent(new ECS.Components.Speed(3.5));
+		entity.addComponent(new ECS.Components.Speed(3));
 		entity.addComponent(new ECS.Components.Velocity());
 		entity.addComponent(new ECS.Components.Health(100));
 		entity.addComponent(new ECS.Components.Collision(16, 16));
-		entity.addComponent(new ECS.Components.Spritesheet(spritesheet, 10, 11));
+		entity.addComponent(new ECS.Components.Spritesheet(spritesheet, 16, 16));
 		entity.addComponent(new ECS.Components.PlayerControl());
 		entity.addComponent(new ECS.Components.Gravity());
 		return entity;
@@ -33,7 +33,7 @@ ECS.Assemblages = {
 	Enemy: function(x, y) {
 		var entity = new ECS.Entity();
 		var spritesheet = new Image();
-		spritesheet.src = "res/mummy.png";
+		spritesheet.src = "res/ghost.png";
 		entity.addComponent(new ECS.Components.Type("enemy"));
 		entity.addComponent(new ECS.Components.Position(x, y));
 		entity.addComponent(new ECS.Components.Speed(2));
@@ -42,7 +42,7 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Health(5));
 		entity.addComponent(new ECS.Components.Damage(5));
 		entity.addComponent(new ECS.Components.Collision(16, 16));
-		entity.addComponent(new ECS.Components.Spritesheet(spritesheet, 10, 15));
+		entity.addComponent(new ECS.Components.Spritesheet(spritesheet, 16, 16));
 		entity.addComponent(new ECS.Components.Gravity());
 		return entity;
 	},
@@ -64,7 +64,7 @@ ECS.Assemblages = {
 		entity.addComponent(new ECS.Components.Type("tile"));
 		entity.addComponent(new ECS.Components.Position(x, y));
 		entity.addComponent(new ECS.Components.Collision(16, 16));
-		entity.addComponent(new ECS.Components.Spritesheet(spritesheet, 16, 16, Math.floor(Math.random() * 4 + 1)));
+		entity.addComponent(new ECS.Components.Spritesheet(spritesheet, 16, 16, 1));
 		return entity;
 	},
 

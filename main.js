@@ -9,9 +9,16 @@ var player;
 var timer;
 var healthBar;
 
+var startScreen = new Image();
+startScreen.src = "res/start.png";
+var overScreen = new Image();
+overScreen.src = "res/GameOverScreen2.png";
+
+var state = "start";
+
 window.onload = function() {
 	canvas.width = 400;
-	canvas.height = 480;
+	canvas.height = 400;
 
 	// Set up keyboard and mouse input
 	Input.bindKeyListener(document.body);
@@ -88,8 +95,28 @@ window.onload = function() {
 
 	// The game loop that will call all of the systems and repeat
 	function loop() {
-		for (var i = 0; i < systems.length; ++i) {
-			systems[i]();
+		switch (state) {
+		case "start":
+			ctx.drawImage(startScreen, 0, 0);
+			if (Input.isKeyDown(document.body, "Z")) {
+				state = "play";
+				timer.components.Text.text = "0:00";
+				timeStart = Date.now();
+			}
+			break;
+		case "play":
+			for (var i = 0; i < systems.length; ++i) {
+				systems[i]();
+			}
+			break;
+		case "over":
+			ctx.drawImage(overScreen, 0, 0);
+			if (Input.isKeyDown(document.body, "Z")) {
+				state = "play";
+				timer.components.Text.text = "0:00";
+				timeStart = Date.now();
+			}
+			break;
 		}
 
 		// Repeats when the browser redraws everything

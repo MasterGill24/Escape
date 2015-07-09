@@ -22,15 +22,13 @@ ECS.Systems.PlayerControl = function() {
 				var moving = false;
 				if (Input.isKeyDown(document.body, "left")) {
 					entity.components.Velocity.velocity.add(new Vector(-entity.components.Speed.speed, 0));
-					entity.components.Spritesheet.flip = true;
+					entity.components.Spritesheet.animationNum = 1;
 					movingRight = false;
-					moving = true;
 				}
 				if (Input.isKeyDown(document.body, "right")) {
 					entity.components.Velocity.velocity.add(new Vector(entity.components.Speed.speed, 0));
-					entity.components.Spritesheet.flip = false;
+					entity.components.Spritesheet.animationNum = 0;
 					movingRight = true;
-					moving = true;
 				}
 				if (Input.isKeyDown(document.body, "z")) {
 					if (canJump) {
