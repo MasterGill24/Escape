@@ -5,6 +5,13 @@ ECS.Components.Type = function(type) {
 }
 ECS.Components.Type.prototype.name = "Type";
 
+ECS.Components.AIType = function(aiType) {
+	this.aiType = aiType;
+
+	return this;
+}
+ECS.Components.AIType.prototype.name = "AIType";
+
 /**
  * The entity's position in the world.
  */

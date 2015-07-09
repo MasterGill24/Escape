@@ -33,14 +33,16 @@ ECS.Assemblages = {
 	Enemy: function(x, y) {
 		var entity = new ECS.Entity();
 		var spritesheet = new Image();
-		spritesheet.src = "res/ghost.png";
+		var follow = Math.random() < 0.1;
+		spritesheet.src = (follow ? "res/follow.png" : "res/ghost.png");
 		entity.addComponent(new ECS.Components.Type("enemy"));
+		entity.addComponent(new ECS.Components.AIType((follow ? "follow" : "random")));
 		entity.addComponent(new ECS.Components.Position(x, y));
 		entity.addComponent(new ECS.Components.Speed(2));
 		entity.addComponent(new ECS.Components.Velocity());
 		entity.components.Velocity.velocity.x = entity.components.Speed.speed;
 		entity.addComponent(new ECS.Components.Health(5));
-		entity.addComponent(new ECS.Components.Damage(5));
+		entity.addComponent(new ECS.Components.Damage(follow ? 2 : 5));
 		entity.addComponent(new ECS.Components.Collision(16, 16));
 		entity.addComponent(new ECS.Components.Spritesheet(spritesheet, 16, 16));
 		entity.addComponent(new ECS.Components.Gravity());

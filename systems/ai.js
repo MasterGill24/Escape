@@ -28,10 +28,22 @@ ECS.Systems.AI = function() {
 					canJump[entityId] = true;
 				}
 
-                if (canJump[entityId] && Math.random() < 0.1 && tileInFront(entity)) {
+                if (entity.components.AIType.aiType === "random" && canJump[entityId] && Math.random() < 0.1 && tileInFront(entity)) {
                     entity.components.Gravity.gravityPos = -10;
                     entity.components.Gravity.inAir = true;
                     canJump[entityId] = false;
+                } else if (entity.components.AIType.aiType === "follow") {
+                    if (player.components.Position.x < entity.components.Position.x && entity.components.Velocity.velocity.x > 0) {
+                        entity.components.Velocity.velocity.x *= -1;
+                    } else if (player.components.Position.x > entity.components.Position.x && entity.components.Velocity.velocity.x < 0) {
+                        entity.components.Velocity.velocity.x *= -1;
+                    }
+
+                    if (player.components.Position.y < entity.components.Position.y - 1 && canJump[entityId] && tileInFront(entity)) {
+                        entity.components.Gravity.gravityPos = -10;
+                        entity.components.Gravity.inAir = true;
+                        canJump[entityId] = false;
+                    }
                 }
             }
         }
