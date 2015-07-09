@@ -111,6 +111,11 @@ window.onload = function() {
 			break;
 		case "over":
 			ctx.drawImage(overScreen, 0, 0);
+			ctx.fillStyle = "#FFFFFF";
+			ctx.textAlign = "center";
+			ctx.font = "16pt Sans-Serif";
+			ctx.textBaseline = "top";
+			ctx.fillText(timer.components.Text.text, timer.components.Position.x, timer.components.Position.y + 90)
 			if (Input.isKeyDown(document.body, "Z")) {
 				state = "play";
 				timer.components.Text.text = "0:00";
