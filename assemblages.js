@@ -5,7 +5,7 @@ ECS.Assemblages = {
 		spritesheet.src = "res/player.png";
 		entity.addComponent(new ECS.Components.Type("player"));
 		entity.addComponent(new ECS.Components.Position(x, y));
-		entity.addComponent(new ECS.Components.Speed(3));
+		entity.addComponent(new ECS.Components.Speed(3.5));
 		entity.addComponent(new ECS.Components.Velocity());
 		entity.addComponent(new ECS.Components.Health(100));
 		entity.addComponent(new ECS.Components.Collision(16, 16));
@@ -21,9 +21,9 @@ ECS.Assemblages = {
 		spritesheet.src = "res/bullet.png";
 		entity.addComponent(new ECS.Components.Type("bullet"));
 		entity.addComponent(new ECS.Components.Position(x, y));
-		entity.addComponent(new ECS.Components.Speed(10));
+		entity.addComponent(new ECS.Components.Speed(16));
 		entity.addComponent(new ECS.Components.Velocity());
-		entity.addComponent(new ECS.Components.Damage(2.5));
+		entity.addComponent(new ECS.Components.Damage(5));
 		entity.addComponent(new ECS.Components.Collision(2, 1));
 		entity.addComponent(new ECS.Components.Spritesheet(spritesheet, 2, 1));
 		entity.components.Velocity.velocity.x = (moveRight ? 1 : -1) * entity.components.Speed.speed;
